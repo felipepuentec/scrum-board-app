@@ -6,10 +6,42 @@
     <span>My Application</span>
   </mat-toolbar> -->
   <div class="row mt-4">
-    @for (column of columns; track column) {
-      <div class="col-4">
-        <app-board-state-column [columnName]="column"></app-board-state-column>
-      </div>
-    }
+    <div class="col-4">
+      <app-board-state-column
+        cdkDropList
+        #backlogListId="cdkDropList"
+        [cdkDropListData]="backlogList"
+        [cards]="backlogList"
+        [cdkDropListConnectedTo]="[inProgressListId, doneListId]"
+        (cdkDropListDropped)="drop($event)"
+        [columnName]="'Backlog'"></app-board-state-column>
+    </div>
+    <div class="col-4">
+      <app-board-state-column
+        cdkDropList
+        #inProgressListId="cdkDropList"
+        [cdkDropListData]="inProgressList"
+        [cdkDropListConnectedTo]="[backlogListId, doneListId]"
+        (cdkDropListDropped)="drop($event)"
+        [cards]="inProgressList"
+        [columnName]="'In Progress'"></app-board-state-column>
+    </div>
+    <div class="col-4">
+      <app-board-state-column
+        cdkDropList
+        #doneListId="cdkDropList"
+        [cdkDropListData]="doneList"
+        [cdkDropListConnectedTo]="[inProgressListId, backlogListId]"
+        (cdkDropListDropped)="drop($event)"
+        [cards]="doneList"
+        [columnName]="'Done'"></app-board-state-column>
+    </div>
   </div>
 </div>
+<button
+  class="add-button"
+  mat-mini-fab
+  aria-label="Example icon button with a home icon"
+  (click)="openDialog()">
+  <mat-icon>add</mat-icon>
+</button>

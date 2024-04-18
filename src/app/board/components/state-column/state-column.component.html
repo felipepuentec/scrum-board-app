@@ -12,10 +12,17 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title class="text-center">
-      {{ columnName }}
+      {{ columnName }} ({{ cards.length }})
     </mat-card-title>
   </mat-card-header>
   <hr />
-  <mat-card-content class="card-body"></mat-card-content>
-  <div class="scrum-items"></div>
+  <mat-card-content class="card-body">
+    <div class="scrum-items">
+      @for (card of cards; track card.title) {
+        <app-board-scrum-item
+          [cardTitle]="card.title"
+          [cardDescription]="card.description"></app-board-scrum-item>
+      }
+    </div>
+  </mat-card-content>
 </mat-card>

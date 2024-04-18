@@ -1,3 +1,9 @@
 .spacer{
     margin-left: 4vw;
 }
+
+.add-button{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
