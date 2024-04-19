@@ -19,9 +19,7 @@
   <mat-card-content class="card-body">
     <div class="scrum-items">
       @for (card of cards; track card.title) {
-        <app-board-scrum-item
-          [cardTitle]="card.title"
-          [cardDescription]="card.description"></app-board-scrum-item>
+        <app-board-scrum-item [cardInformation]="card"></app-board-scrum-item>
       }
     </div>
   </mat-card-content>

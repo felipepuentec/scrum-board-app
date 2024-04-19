@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Create a new card</h2>
+<mat-dialog-content>
+  <!-- <p>Create a new card</p> -->
+  <mat-form-field>
+    <mat-label>Title</mat-label>
+    <input matInput [(ngModel)]="data.title" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input matInput [(ngModel)]="data.description" />
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button (click)="onNoClick()">Go back</button>
+  <button
+    mat-raised-button
+    color="primary"
+    [mat-dialog-close]="[data.title, data.description]">
+    Ok
+  </button>
+</mat-dialog-actions>

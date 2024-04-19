@@ -1,0 +1,10 @@
+button {
+    margin-left: 8px;
+    margin-bottom: 8px;
+}
+
+.add-button{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}

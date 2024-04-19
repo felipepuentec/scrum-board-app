@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { StateColumnComponent } from '../../components/state-column/state-column.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { CardContent } from '../../interfaces/card-content.interface';
+import {
+  CardContent,
+  ScrumColumn,
+} from '../../interfaces/card-content.interface';
 import { BoardService } from '../../services/board.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -28,6 +31,7 @@ import { AddScrumItemComponent } from '../../components/scrum-item/add-scrum-ite
   selector: 'app-scrum-board',
   standalone: true,
   imports: [
+    AddScrumItemComponent,
     StateColumnComponent,
     MatToolbarModule,
     CdkDropList,
@@ -37,33 +41,36 @@ import { AddScrumItemComponent } from '../../components/scrum-item/add-scrum-ite
   templateUrl: './scrum-board.component.html',
   styleUrl: './scrum-board.component.css',
 })
-export class ScrumBoardComponent implements OnInit {
-  public backlogList: CardContent[] = [];
-  public inProgressList: CardContent[] = [];
-  public doneList: CardContent[] = [];
+export class ScrumBoardComponent {
+  // public backlogList: CardContent[] = [];
+  // public inProgressList: CardContent[] = [];
+  // public doneList: CardContent[] = [];
 
   constructor(
     private boardService: BoardService,
     public dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {
-    this.backlogList = this.boardService.backlogList;
-    this.inProgressList = this.boardService.inProgressList;
-    this.doneList = this.boardService.doneList;
+  get backlogList(): CardContent[] {
+    return this.boardService.backlogList.content;
   }
+  get inProgressList(): CardContent[] {
+    return this.boardService.inProgressList.content;
+  }
+  get doneList(): CardContent[] {
+    return this.boardService.doneList.content;
+  }
+
+  // ngOnInit(): void {
+  //   this.backlogList = this.boardService.backlogList.content;
+  //   this.inProgressList = this.boardService.inProgressList.content;
+  //   this.doneList = this.boardService.doneList.content;
+  // }
 
   public columns: string[] = ['Backlog', 'In Progress', 'Done'];
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(AddScrumItemComponent, { data: {} });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed, result: result');
-    });
-  }
-
   drop(event: CdkDragDrop<CardContent[]>): void {
+    // console.log(event.previousContainer.data[event.previousIndex]);
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -71,6 +78,12 @@ export class ScrumBoardComponent implements OnInit {
         event.currentIndex
       );
     } else {
+      const transferredItem = event.previousContainer.data[event.previousIndex];
+
+      // Update status of the transferred card
+      transferredItem.status = event.container.data[0].status;
+
+      // Update status of the transferred card
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,

@@ -1,6 +1,10 @@
-<mat-card class="card-box" cdkDrag>
+<mat-card (click)="openDialog()" class="card-box" cdkDrag>
   <mat-card-header>
-    <mat-card-title class="text-center"> {{ cardTitle }} </mat-card-title>
+    <mat-card-title class="text-center">
+      {{ cardInformation.title }}
+    </mat-card-title>
   </mat-card-header>
-  <mat-card-content class="card-body">{{ cardDescription }}</mat-card-content>
+  <mat-card-content class="card-body">
+    {{ cardInformation.description }}
+  </mat-card-content>
 </mat-card>
