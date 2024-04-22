@@ -90,7 +90,6 @@ export class BoardService {
   }
 
   deleteScrumItemById(id: string, status: Status): void {
-    console.log(id);
     // Check in which list the item is
     switch (status) {
       case 'Backlog':
@@ -108,9 +107,41 @@ export class BoardService {
           item => item.id !== id
         );
     }
-    console.log('backlog', this.backlogList);
-    console.log('progress', this.inProgressList);
-    console.log('done', this.doneList);
+  }
+
+  updateScrumItemById(
+    id: string,
+    status: Status,
+    title: string,
+    description: string
+  ): void {
+    switch (status) {
+      case 'Backlog':
+        const backlogIndex = this.backlogList.content.findIndex(
+          obj => obj.id === id
+        );
+        if (backlogIndex !== -1) {
+          this.backlogList.content[backlogIndex].title = title;
+          this.backlogList.content[backlogIndex].description = description;
+        }
+        break;
+      case 'In Progress':
+        const inProgressIndex = this.inProgressList.content.findIndex(
+          obj => obj.id === id
+        );
+        if (inProgressIndex !== -1) {
+          this.inProgressList.content[inProgressIndex].title = title;
+          this.inProgressList.content[inProgressIndex].description =
+            description;
+        }
+        break;
+      default:
+        const doneIndex = this.doneList.content.findIndex(obj => obj.id === id);
+        if (doneIndex !== -1) {
+          this.doneList.content[doneIndex].title = title;
+          this.doneList.content[doneIndex].description = description;
+        }
+    }
   }
 
   constructor() {}

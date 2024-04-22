@@ -70,7 +70,6 @@ export class ScrumBoardComponent {
   public columns: string[] = ['Backlog', 'In Progress', 'Done'];
 
   drop(event: CdkDragDrop<CardContent[]>): void {
-    // console.log(event.previousContainer.data[event.previousIndex]);
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,

@@ -40,7 +40,12 @@ export class ScrumItemComponent {
             this.cardInformation.status!
           );
         } else {
-          console.log(`The dialog was closed, result: ${result}`);
+          this.boardService.updateScrumItemById(
+            this.cardInformation.id!,
+            this.cardInformation.status!,
+            result[1],
+            result[2]
+          );
         }
         // const editedCard: CardContent = {
         //   title: result[1],
