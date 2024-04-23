@@ -1,0 +1,17 @@
+.card-title{
+    color: var(--color-primary);
+}
+
+.card-body{
+    height: 75vh;
+}
+
+.scrum-items{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.mat-mdc-card-header{
+    justify-content: center;
+}

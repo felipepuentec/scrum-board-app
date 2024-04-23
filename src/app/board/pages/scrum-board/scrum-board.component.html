@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <span class="spacer">Scrum Board</span>
+</mat-toolbar>
+<div class="container">
+  <!-- <mat-toolbar>
+    <span>My Application</span>
+  </mat-toolbar> -->
+  <div class="row mt-4">
+    @for (column of columns; track column) {
+      <div class="col-4">
+        <app-board-state-column [columnName]="column"></app-board-state-column>
+      </div>
+    }
+  </div>
+</div>
