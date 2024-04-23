@@ -16,6 +16,10 @@
     </mat-card-title>
   </mat-card-header>
   <hr />
-  <mat-card-content class="card-body"></mat-card-content>
+  <mat-card-content class="card-body">
+    @for (item of columnCards; track $index) {
+      <app-card [props]="item"></app-card>
+    }
+  </mat-card-content>
   <div class="scrum-items"></div>
 </mat-card>

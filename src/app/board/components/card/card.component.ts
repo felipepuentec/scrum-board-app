@@ -1,14 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
-import { Status } from '../../types/status';
-
-interface Props {
-  id?: string;
-  title: string;
-  description: string;
-  status?: Status;
-}
+import { Status } from '../../interfaces/types/status';
+import { CardProps } from '../../interfaces/card-props.interface';
 
 @Component({
   selector: 'app-card',
@@ -18,7 +12,7 @@ interface Props {
   styleUrl: './card.component.css',
 })
 export class CardComponent {
-  @Input() props: Props = {
+  @Input() props: CardProps = {
     id: 'fjdk12',
     title: 'refactor',
     description: 'refactor of front-end based on new figma design',

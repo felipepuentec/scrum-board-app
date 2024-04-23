@@ -6,9 +6,11 @@
     <span>My Application</span>
   </mat-toolbar> -->
   <div class="row mt-4">
-    @for (column of columns; track column) {
+    @for (column of columnsContent; track column) {
       <div class="col-4">
-        <app-board-state-column [columnName]="column"></app-board-state-column>
+        <app-board-state-column
+          [columnCards]="column.content"
+          [columnName]="column.title"></app-board-state-column>
       </div>
     }
   </div>

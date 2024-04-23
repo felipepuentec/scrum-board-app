@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ScrumBoardComponent } from './board/pages/scrum-board/scrum-board.component';
-import { CardComponent } from './card/card.component';
+import { CardComponent } from './board/components/card/card.component';
 
 @Component({
   selector: 'app-root',
