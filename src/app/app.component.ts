@@ -7,7 +7,12 @@ import { CardComponent } from './board/components/card/card.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MatSlideToggleModule, ScrumBoardComponent, CardComponent],
+  imports: [
+    RouterOutlet,
+    MatSlideToggleModule,
+    ScrumBoardComponent,
+    CardComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
