@@ -11,8 +11,8 @@
       },
       "extends": [
         "plugin:@angular-eslint/recommended",
-        "plugin:@angular-eslint/template/process-inline-templates",
-        "plugin:prettier/recommended"
+        "plugin:@angular-eslint/template/process-inline-templates"
+        // "plugin:prettier/recommended"
       ],
       "rules": {
         "@angular-eslint/component-class-suffix": [
@@ -37,17 +37,15 @@
             "style": "camelCase"
           }
         ],
-        "@angular-eslint/use-lifecycle-interface": [
-          "error"
-        ],
+        "@angular-eslint/use-lifecycle-interface": ["error"],
         "@typescript-eslint/member-ordering": 0,
-        "@typescript-eslint/naming-convention": 0,
-        "prettier/prettier": [
-          "error",
-          {
-            "endOfLine": "auto"
-          }
-        ]
+        "@typescript-eslint/naming-convention": 0
+        // "prettier/prettier": [
+        //   "error",
+        //   {
+        //     "endOfLine": "auto"
+        //   }
+        // ]
       }
     },
     {
@@ -57,11 +55,14 @@
     },
     {
       "files": ["*.html"],
-      "excludedFiles": ["*inline-template-*.component.html"],
-      "extends": ["plugin:prettier/recommended"],
-      "rules": {
-        "prettier/prettier": ["error", { "parser": "angular", "endOfLine": "auto" }]
-      }
+      "excludedFiles": ["*inline-template-*.component.html"]
+      // "extends": ["plugin:prettier/recommended"],
+      // "rules": {
+      //   "prettier/prettier": [
+      //     "error",
+      //     { "parser": "angular", "endOfLine": "auto" }
+      //   ]
+      // }
     }
   ]
 }
