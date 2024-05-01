@@ -3,7 +3,8 @@
 }
 
 .card-body {
-  height: 75vh;
+  /* height: 75vh; */
+  height: min(75vh, fit-content);
 }
 
 .scrum-items {
