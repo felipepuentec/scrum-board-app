@@ -17,7 +17,7 @@
   </mat-card-header>
   <hr />
   <mat-card-content class="card-body">
-    @for (item of columnCards; track $index) {
+    @for (item of columnCards; track item.title) {
       <app-card [props]="item"></app-card>
     }
   </mat-card-content>

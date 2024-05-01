@@ -1,12 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatCardFooter, MatCardModule } from '@angular/material/card';
+import { CdkDrag } from '@angular/cdk/drag-drop';
 import { MatDividerModule } from '@angular/material/divider';
 import { CardProps } from '../../interfaces/card-props.interface';
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [MatCardModule, MatDividerModule, MatCardFooter],
+  imports: [MatCardModule, MatDividerModule, MatCardFooter, CdkDrag],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',
 })

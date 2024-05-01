@@ -17,5 +17,5 @@ export class StateColumnComponent {
   public columnName: string = '';
 
   @Input()
-  public columnCards!: CardProps[];
+  public columnCards: CardProps[] = [];
 }

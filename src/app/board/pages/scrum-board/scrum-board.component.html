@@ -6,12 +6,42 @@
     <span>My Application</span>
   </mat-toolbar> -->
   <div class="row mt-4">
-    @for (column of columnsContent; track column) {
+    <!-- @for (column of columnsContent; track column) {
       <div class="col-4">
         <app-board-state-column
           [columnCards]="column.content"
           [columnName]="column.title"></app-board-state-column>
       </div>
-    }
+    } -->
+    <div class="col-4">
+      <app-board-state-column
+        cdkDropList
+        #toDoListId="cdkDropList"
+        [cdkDropListData]="toDoList"
+        [columnCards]="toDoList"
+        [cdkDropListConnectedTo]="[inProgressListId, doneListId]"
+        (cdkDropListDropped)="drop($event)"
+        [columnName]="'To Do'"></app-board-state-column>
+    </div>
+    <div class="col-4">
+      <app-board-state-column
+        cdkDropList
+        #inProgressListId="cdkDropList"
+        [cdkDropListData]="inProgressList"
+        [cdkDropListConnectedTo]="[toDoListId, doneListId]"
+        (cdkDropListDropped)="drop($event)"
+        [columnCards]="inProgressList"
+        [columnName]="'In Progress'"></app-board-state-column>
+    </div>
+    <div class="col-4">
+      <app-board-state-column
+        cdkDropList
+        #doneListId="cdkDropList"
+        [cdkDropListData]="doneList"
+        [cdkDropListConnectedTo]="[inProgressListId, toDoListId]"
+        (cdkDropListDropped)="drop($event)"
+        [columnCards]="doneList"
+        [columnName]="'Done'"></app-board-state-column>
+    </div>
   </div>
 </div>
