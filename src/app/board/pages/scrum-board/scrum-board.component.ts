@@ -45,10 +45,10 @@ export class ScrumBoardComponent {
         event.currentIndex
       );
     } else {
-      const transferredItem = event.previousContainer.data[event.previousIndex];
+      // const transferredItem = event.previousContainer.data[event.previousIndex];
 
       // Update status of the transferred card
-      transferredItem.status = event.container.data[0].status;
+      // transferredItem.status = event.container.data[0].status;
 
       // Update status of the transferred card
       transferArrayItem(
