@@ -5,6 +5,10 @@
 .card-body {
   /* height: 75vh; */
   height: min(75vh, fit-content);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 16px;
 }
 
 .scrum-items {

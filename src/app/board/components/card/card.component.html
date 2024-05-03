@@ -1,5 +1,10 @@
 <mat-card class="card" cdkDrag>
-  <mat-card-header>{{ props.title }}</mat-card-header>
+  <mat-card-header>
+    <mat-card-title>{{ props.title }}</mat-card-title>
+    <button mat-icon-button (click)="openDialog()">
+      <mat-icon>more_horiz</mat-icon>
+    </button>
+  </mat-card-header>
   <mat-divider class="divider"></mat-divider>
   <mat-card-content>{{ props.description }}</mat-card-content>
   <mat-card-footer class="card-footer">
@@ -7,10 +12,7 @@
       mat-card-avatar
       class="avatar"
       [style]="{
-        'background-color': convertInitialsToHex([
-          getInitials()[0],
-          getInitials()[1]
-        ])
+        'background-color': convertInitialsToHex()
       }">
       <span>{{ getInitials() }}</span>
     </div>
