@@ -1,21 +1,17 @@
-<!-- <h2 class="text-center"></h2>
-<div class="card">
-  <div class="card-body">
-    <div class="card-title text-center fw-bold fs-5">
-      {{ columnName }}
-    </div>
-    <hr />
-    <div class="scrum-items"></div>
-  </div>
-</div> -->
+
 
 <mat-card>
   <mat-card-header>
-    <mat-card-title class="text-center">
-      {{ columnName }}
+    <mat-card-title class="container">
+      <p class="h5 left">
+        {{ columnName }}
+      </p>
+      <span class="h5 right">
+        {{ columnCards.length }}
+      </span>
     </mat-card-title>
   </mat-card-header>
-  <hr />
+  <!-- <hr /> -->
   <mat-card-content class="card-body">
     @for (item of columnCards; track item.title) {
       <app-card [props]="item"></app-card>
