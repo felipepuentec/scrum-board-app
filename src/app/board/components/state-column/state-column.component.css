@@ -2,6 +2,10 @@
   color: var(--color-primary);
 }
 
+hr {
+  background-color: #e8e8e8;
+}
+
 .card-body {
   /* height: 75vh; */
   height: min(75vh, fit-content);
@@ -9,8 +13,28 @@
   flex-direction: column;
   gap: 16px;
   margin-bottom: 16px;
+  background-color: #e8e8e8;
 }
 
+/* .mat-mdc-card-header[_ngcontent-ng-c2628714681] {
+  justify-content: start;
+} */
+
+.container {
+  display: flex;
+  width: 100%;
+  /* justify-content: space-between; */
+}
+
+.left {
+  flex: 1;
+  text-align: left;
+}
+
+.right {
+  flex: 0;
+  text-align: right;
+}
 .scrum-items {
   display: flex;
   flex-direction: column;
@@ -18,5 +42,8 @@
 }
 
 .mat-mdc-card-header {
-  justify-content: center;
+  display: block;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  /* justify-content: center; */
 }
