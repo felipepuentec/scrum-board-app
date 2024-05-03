@@ -3,19 +3,32 @@ import { MatCardFooter, MatCardModule } from '@angular/material/card';
 import { CdkDrag } from '@angular/cdk/drag-drop';
 import { MatDividerModule } from '@angular/material/divider';
 import { CardProps } from '../../interfaces/card-props.interface';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [MatCardModule, MatDividerModule, MatCardFooter, CdkDrag],
+  imports: [
+    MatCardModule,
+    MatDividerModule,
+    MatCardFooter,
+    CdkDrag,
+    MatButtonModule,
+    MatIconModule,
+  ],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',
 })
 export class CardComponent implements OnInit {
+  constructor(public dialog: MatDialog) {}
+
   @Input() props!: CardProps;
 
   ngOnInit() {
-    console.log('arrayToGet', this.props);
+    console.log();
   }
 
   getInitials() {
@@ -25,10 +38,22 @@ export class CardComponent implements OnInit {
     );
   }
 
-  convertInitialsToHex(initials: string[]) {
-    const firstLetter = Math.floor(initials[0].charCodeAt(0) / 16).toString(16);
-    const secondLetter = (initials[1].charCodeAt(0) % 16).toString(16);
+  convertInitialsToHex(initials?: string) {
+    initials =
+      this.props.asigned.split(' ')[0].slice(0, 2) +
+      this.props.asigned.split(' ')[1].slice(0, 1);
 
-    return `#${firstLetter.toUpperCase()}${secondLetter.toUpperCase()}${firstLetter.toUpperCase()}${secondLetter.toUpperCase()}`;
+    const hexChars: string[] = [];
+    initials.split('').forEach(l => {
+      hexChars.push(Math.floor(l.charCodeAt(0)).toString(16));
+    });
+
+    return `#${hexChars.join('')}`;
+  }
+
+  openDialog() {
+    this.dialog.open(DialogComponent, {
+      data: { cardInfo: this.props },
+    });
   }
 }
