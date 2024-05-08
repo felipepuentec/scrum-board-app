@@ -32,16 +32,25 @@ export class CardComponent implements OnInit {
   }
 
   getInitials() {
-    return (
-      this.props.asigned.split(' ')[0][0].toUpperCase() +
-      this.props.asigned.split(' ')[1][0].toUpperCase()
-    );
+    if (this.props.assignee.split(' ').length > 1) {
+      return (
+        this.props.assignee.split(' ')[0][0].toUpperCase() +
+        this.props.assignee.split(' ')[1][0].toUpperCase()
+      );
+    } else {
+      return this.props.assignee.slice(0, 2);
+    }
   }
 
-  convertInitialsToHex(initials?: string) {
-    initials =
-      this.props.asigned.split(' ')[0].slice(0, 2) +
-      this.props.asigned.split(' ')[1].slice(0, 1);
+  convertInitialsToHex() {
+    let initials = '';
+    if (this.props.assignee.split(' ').length > 1) {
+      initials =
+        this.props.assignee.split(' ')[0].slice(0, 2) +
+        this.props.assignee.split(' ')[1].slice(0, 1);
+    } else {
+      initials = this.props.assignee.slice(0, 2);
+    }
 
     const hexChars: string[] = [];
     initials.split('').forEach(l => {
