@@ -24,9 +24,6 @@ export class ScrumBoardComponent {
 
   constructor(private appBoardService: AppBoardService) {}
 
-  get columnsContent(): Column[] {
-    return this.appBoardService.mockColumns;
-  }
   get toDoList(): CardProps[] {
     return this.appBoardService.toDoList.content;
   }

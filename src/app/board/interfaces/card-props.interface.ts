@@ -5,5 +5,5 @@ export interface CardProps {
   title: string;
   description: string;
   status?: Status;
-  asigned: string;
+  assignee: string;
 }
