@@ -34,6 +34,7 @@ hr {
 .right {
   flex: 0;
   text-align: right;
+  color: gray;
 }
 .scrum-items {
   display: flex;

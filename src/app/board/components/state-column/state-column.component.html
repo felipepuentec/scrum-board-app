@@ -6,7 +6,7 @@
       <p class="h5 left">
         {{ columnName }}
       </p>
-      <span class="h5 right">
+      <span [@countChanged]="columnCards.length"  class="h5 right">
         {{ columnCards.length }}
       </span>
     </mat-card-title>
