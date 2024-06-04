@@ -18,7 +18,4 @@ import { CardComponent } from './board/components/card/card.component';
 })
 export class AppComponent {
   title = 'scrum-board-app';
-
-
-  
 }
